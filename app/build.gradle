@@ -1,0 +1,103 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+}
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
+
+    defaultConfig {
+        applicationId "com.datayes.clouddemo"
+        minSdkVersion 16
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    // ARouter编译配置
+    kapt {
+        arguments {
+            arg("AROUTER_MODULE_NAME", project.getName())
+        }
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    repositories {
+        flatDir {
+            //this way we can find the .aar file in libs folder
+            dirs 'libs'
+        }
+    }
+}
+
+dependencies {
+    // 原生依赖
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.multidex:multidex:2.0.0'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.core:core-ktx:1.3.2'
+    // UI组件
+    implementation (name: 'common-view-0.9.3', ext: 'aar')
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    implementation 'com.google.android.material:material:1.2.1'
+    implementation 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'
+    implementation "com.github.hackware1993:MagicIndicator:1.6.0"
+
+    // okHttp
+    implementation 'com.squareup.okhttp3:okhttp:4.9.0'
+    // retrofit
+    implementation "com.squareup.retrofit2:retrofit:2.9.0"
+    implementation "com.squareup.retrofit2:converter-gson:2.9.0"
+    implementation "com.squareup.retrofit2:converter-scalars:2.9.0"
+    // rxjava
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.12'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+    implementation "com.trello.rxlifecycle3:rxlifecycle-android:3.1.0"
+    implementation "com.trello.rxlifecycle3:rxlifecycle-components:3.1.0"
+    // router
+    implementation "com.alibaba:arouter-api:1.5.1"
+    kapt "com.alibaba:arouter-compiler:1.5.1"
+
+    // 通联基础组件
+    implementation (name: 'module-common-1.28.22', ext: 'aar')
+    implementation (name: 'common-bus-0.5.3', ext: 'aar')
+    implementation (name: 'common-net-0.6.8', ext: 'aar')
+    implementation (name: 'common-storage-0.5.0', ext: 'aar')
+    implementation (name: 'common-utils-0.5.9', ext: 'aar')
+    // 通联云平台服务
+    implementation (name: 'common-cloud-0.10.11', ext: 'aar')
+    // 通联登陆服务实现
+    implementation (name: 'cloud-1.0.0', ext: 'aar')
+    // 通联基础服务非实现（纯接口）
+    implementation (name: 'rrp-api-1.6.18', ext: 'aar')
+    implementation (name: 'news_api-1.3.0', ext: 'aar')
+    implementation (name: 'paper_api-0.2.0', ext: 'aar')
+    implementation (name: 'report_api-1.4.0', ext: 'aar')
+    implementation (name: 'robotforecast_api-0.3.0', ext: 'aar')
+    implementation (name: 'robotmarket_api-0.4.0', ext: 'aar')
+    implementation (name: 'selfstock_api-0.5.1', ext: 'aar')
+    implementation (name: 'servicestock_api-1.5.0', ext: 'aar')
+    implementation (name: 'stockmarket_api-0.5.0', ext: 'aar')
+    implementation (name: 'theme_api-0.4.0', ext: 'aar')
+    implementation (name: 'balance_api-1.3.0', ext: 'aar')
+    implementation (name: 'announce_api-1.4.2', ext: 'aar')
+    implementation (name: 'common-daddy-api-0.1.4', ext: 'aar')
+
+
+}
