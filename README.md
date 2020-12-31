@@ -74,32 +74,52 @@
     <!-- 通联app_id -->
     <meta-data
         android:name="my_app_id"
-        android:value="ira" />
+        android:value="需要找通联的同事配置" />
     <!-- 通联app_secret -->
     <meta-data
         android:name="my_app_secret"
-        android:value="ira_secret" />
+        android:value="需要找通联的同事配置" />
     <!-- 通联regisger_source 注册来源 -->
     <meta-data
         android:name="my_regisger_source"
-        android:value="ira_secret " />
+        android:value="需要找通联的同事配置 " />
     <!-- 渠道 -->
     <meta-data
         android:name="CHANNEL"
         android:value="xiaomi" />
 
-#### 4.一键登录配置
-
-    defaultConfig {
-        manifestPlaceholders = [
-                // 包名需要与app包名相同
-                JPUSH_PKGNAME: "com.datayes.irr",
-                // 需要找通联的同事配置appkey
-                JPUSH_APPKEY : "***********",
-                // 暂时填写默认值即可.
-                JPUSH_CHANNEL: "developer-default",
-        ]
+#### 4.gradle配置
+通联aar包配置[ 具体依赖包在demo中 ]
+    android {
+        repositories {
+                flatDir {
+                    //this way we can find the .aar file in libs folder
+                    dirs 'libs'
+                }
+            }
     }
+
+路由
+    // ARouter编译配置
+    kapt {
+        arguments {
+            arg("AROUTER_MODULE_NAME", project.getName())
+        }
+    }
+一键登录
+    android {
+        defaultConfig {
+                manifestPlaceholders = [
+                        // 包名需要与app包名相同
+                        JPUSH_PKGNAME: "com.datayes.irr",
+                        // 需要找通联的同事配置appkey
+                        JPUSH_APPKEY : "***********",
+                        // 暂时填写默认值即可.
+                        JPUSH_CHANNEL: "developer-default",
+                ]
+            }
+    }
+
 
 ### (二).SDK初始化
 
@@ -124,9 +144,6 @@
 
 
     // 初始化智能盯盘
-    Starling.INSTANCE
-            // okhttp用户拦截器
-            .setUserInterceptor(new AuthorizationInterceptor())
 
 ##### 例子：
 
@@ -152,69 +169,3 @@
             return chain.proceed(builder.build());
         }
     }
-
-
-### (四).SDK需要实现的接口
-
-接入者需要实现IExternalProvider接口，可以参考Demo（YiChuangExternalImpl）
-
-    // 初始化智能盯盘
-    Starling.INSTANCE
-            // 设置回调
-            .setExternalProvider(new YiChuangExternalImpl())
-
-##### 需要实现的接口：
-
-    @Override
-    public List<StockBean> getSelfStockList() {
-
-        // TODO 获取自选股列表，这里调用比较频繁，最好是取缓存
-        return getStockBeans();
-    }
-
-    @Override
-    public void openStockDetail(Context context, String ticker, String market) {
-
-        // TODO  打开股票详情页面
-        ToastUtils.showShortToast(context, "打开股票详情页ticker: " + ticker);
-    }
-
-    @Override
-    public String getWebSocketUrl() {
-        // TODO 获取长链接url, 需要保证url token的正确性
-        return Test.INSTANCE.getWebSocketUrl();
-    }
-
-##### 股票数据结构：
-
-    new StockBean(
-        "000002.XSHE", // 证券ID
-        "000002",  // 股票代码 (必须)
-        "万科A", // 名称 (必须)
-        "WKA", // 证券简称拼音
-        "XSHE", // 交易市场  XSHE, XSHG (必须)
-        "E", // 证券类型(股票，债券)
-        "L",// L-上市，S-暂停，DE-终止上市，UN-未上市
-        "",
-        "");
-
-### (五).智能盯盘入口
-
-个股异动入口view (IiaStarlingStockChgView)
-
-    // 必须调用start开始才会启动长链接
-    IiaStarlingStockChgView.start();
-
-    // 必须调用stop才会停止长链接
-    // 未及时断开会产生不必要的性能消耗
-    IiaStarlingStockChgView.stop();
-
-
-板块异动入口view (IiaStarlingAreaChangeView)
-
-    // 必须调用start开始才会启动长链接
-    IiaStarlingAreaChangeView.start();
-
-    // 必须调用stop才会停止长链接
-    // 未及时断开会产生不必要的性能消耗
-    IiaStarlingAreaChangeView.stop();
