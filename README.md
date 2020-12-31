@@ -89,7 +89,8 @@
         android:value="xiaomi" />
 
 #### 4.gradle配置
-通联aar包配置[ 具体依赖包在demo中 ]
+通联aar包配置[ 具体依赖包在demo中 ]：
+
     android {
         repositories {
                 flatDir {
@@ -99,14 +100,16 @@
             }
     }
 
-路由
+路由：
+
     // ARouter编译配置
     kapt {
         arguments {
             arg("AROUTER_MODULE_NAME", project.getName())
         }
     }
-一键登录
+一键登录：
+
     android {
         defaultConfig {
                 manifestPlaceholders = [
@@ -119,7 +122,6 @@
                 ]
             }
     }
-
 
 ### (二).SDK初始化
 
