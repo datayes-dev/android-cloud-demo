@@ -12,7 +12,7 @@ class App : Application() {
         // 初始化通联数据环境
         DataYesCloud.INSTANCE.init(
             this,
-            Environment.STG,
+            Environment.PRD, // 环境配置
             "9",  // 通联数据产品Id，需要通联云平台做配置
             "xiaomi",
             BuildConfig.DEBUG
@@ -21,6 +21,6 @@ class App : Application() {
         // 初始化一键登录
         DataYesCloud.INSTANCE.initOneBtnLogin(this, BuildConfig.DEBUG)
         // 初始化x5 webView自动带有登录信息【非必须】
-        X5WebViewManager.INSTANCE.initX5()
+        DataYesCloud.INSTANCE.initWebView(this)
     }
 }

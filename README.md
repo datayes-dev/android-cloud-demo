@@ -128,7 +128,7 @@
     // 初始化通联数据环境
     DataYesCloud.INSTANCE.init(
         this,
-        Environment.STG,
+        Environment.PRD, // 环境配置
         "9",  // 通联数据产品Id，需要通联云平台做配置
         "xiaomi",
         BuildConfig.DEBUG
@@ -137,12 +137,12 @@
     // 初始化一键登录
     DataYesCloud.INSTANCE.initOneBtnLogin(this, BuildConfig.DEBUG)
     // 初始化x5 webView自动带有登录信息【非必须】
-    X5WebViewManager.INSTANCE.initX5()
+    DataYesCloud.INSTANCE.initWebView(this)
 
 
 ### (三).接口用户权限
 
-用户权限是基于okhttp拦截器，可以参考Demo（AuthorizationInterceptor）
+用户权限是基于okhttp拦截器
 
 ##### 例子：
 
@@ -165,3 +165,22 @@
         ): Observable<BaseRrpBean<List<HomeBannerBean>>>
 
     }
+
+    val serviceSubUrl = "/rrp_mammon/mobile"
+    service?.fetchHomeBannerInfo(serviceSubUrl, true)
+        ?.map {
+            // todo 耗时操作
+            it
+        }
+        ?.compose(RxJavaUtils.observableIoToMain())
+        ?.subscribe(object : NextErrorObserver<BaseRrpBean<List<HomeBannerBean>>>() {
+            override fun onError(e: Throwable) {
+
+            }
+
+            override fun onNext(t: BaseRrpBean<List<HomeBannerBean>>) {
+                val rep = GsonUtils.createGsonString(t)
+                Toast.makeText(baseContext, "请求返回：$rep", Toast.LENGTH_LONG)
+                    .show()
+            }
+        })
