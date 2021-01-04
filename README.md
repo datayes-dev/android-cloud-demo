@@ -144,30 +144,24 @@
 
 用户权限是基于okhttp拦截器，可以参考Demo（AuthorizationInterceptor）
 
-
-    // 初始化智能盯盘
-
 ##### 例子：
 
     /**
-     * okhttp 用户权限拦截器
-     * Created by shenen.gao on 2018/4/27.
-     *
-     * @author shenen.gao
+     *  retrofit 请求接口
      */
+    private val service: IService? by lazy {
+        // 带权限服务获取
+        ApiServiceGenerator.createService(IService::class.java)
+    }
 
-    public class AuthorizationInterceptor implements Interceptor {
+    interface IService {
+        /**
+         * Rxjava类型接口
+         */
+        @GET("{subPath}/whitelist/banner/homepage")
+        fun fetchHomeBannerInfo(
+                @Path(value = "subPath", encoded = true) subPath: String,
+                @Query("onlyFree") onlyFree: Boolean
+        ): Observable<BaseRrpBean<List<HomeBannerBean>>>
 
-        @Override
-        public Response intercept(Chain chain) throws IOException {
-            Request.Builder builder = chain.request().newBuilder();
-
-            // TODO 用户id
-            builder.addHeader("DatayesPrincipalName", "testestest11");
-
-            // TODO deviceId
-            builder.addHeader("deviceId", "deviceId");
-
-            return chain.proceed(builder.build());
-        }
     }
