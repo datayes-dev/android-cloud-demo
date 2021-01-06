@@ -49,4 +49,11 @@
         android:onClick="onWebViewDemo"
         android:text="通联免登陆Webview" />
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_G1"
+        android:onClick="onUserInfo"
+        android:text="用户信息相关demo" />
+
 </LinearLayout>

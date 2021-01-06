@@ -12,7 +12,7 @@ class App : Application() {
         // 初始化通联数据环境
         DataYesCloud.INSTANCE.init(
             this,
-            Environment.PRD, // 环境配置
+            Environment.STG, // 环境配置
             "9",  // 通联数据产品Id，需要通联云平台做配置
             "xiaomi",
             BuildConfig.DEBUG

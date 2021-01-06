@@ -1,5 +1,6 @@
 package com.datayes.clouddemo
 
+import android.content.Intent
 import android.view.View
 import android.widget.Toast
 import com.alibaba.android.arouter.launcher.ARouter
@@ -65,6 +66,10 @@ class MainActivity : BaseActivity() {
     private val service: IService? by lazy {
         // 带权限服务获取
         ApiServiceGenerator.createService(IService::class.java)
+    }
+
+    fun onUserInfo(v: View?) {
+        startActivity(Intent(this, UserInfoDemoActivity::class.java))
     }
 
     fun onRequestDemo(v: View?) {
