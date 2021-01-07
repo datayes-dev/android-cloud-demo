@@ -54,6 +54,8 @@
     // 一键登录
     implementation 'cn.jiguang.sdk:jcore:2.4.2'
     implementation 'cn.jiguang.sdk:jverification:2.6.5'
+    // 微信
+    implementation 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'
 
     // 通联基础组件
     implementation (name: 'module-common-1.28.22', ext: 'aar')
@@ -122,6 +124,35 @@
                 ]
             }
     }
+
+    微信登录配置步骤：
+    1.添加微信响应的页面WXEntryActivity，在 manifest 文件里面加上exported、taskAffinity及launchMode属性，
+      其中exported设置为true，taskAffinity设置为你的包名，launchMode设置为singleTask
+      注：WXEntryActivity目录位置需要在“包名.wxapi.WXEntryActivity”
+
+        <activity
+            android:name="包名.wxapi.WXEntryActivity"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:exported="true"
+            android:taskAffinity="填写你的包名"
+            android:launchMode="singleTask">
+        </activity>
+
+    2.授权登录逻辑在WeChatServiceImpl和WeixinHelper两个类中，请copy到项目中
+
+    3.在应用合适位置进行微信注册初始化(可放在Application或MainActivity页面进行注册)
+        WeixinHelper.registerToWx(this, "微信开放平台的appId")
+
+    4.权限
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- for mta statistics, not necessary-->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
+    4.以上步骤执行完后，可在登录页面进行微信授权登录测试。
 
 ### (二).SDK初始化
 

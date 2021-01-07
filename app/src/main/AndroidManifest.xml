@@ -2,6 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.datayes.clouddemo">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- for mta statistics, not necessary-->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
     <application
         android:name=".App"
         android:allowBackup="true"
@@ -22,6 +29,15 @@
             android:name=".UserInfoDemoActivity"
             android:theme="@style/AppTheme.W1" />
 
+        <!-- 接受微信响应 -->
+        <activity
+            android:name=".wxapi.WXEntryActivity"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:exported="true"
+            android:taskAffinity="com.datayes.clouddemo"
+            android:launchMode="singleTask" />
+
         <!-- 通联app_id -->
         <meta-data
             android:name="my_app_id"
@@ -40,5 +56,10 @@
             android:value="xiaomi" />
 
     </application>
+
+    <!-- 兼容Android11,无法唤起微信 -->
+    <queries>
+        <package android:name="com.tencent.mm" />
+    </queries>
 
 </manifest>

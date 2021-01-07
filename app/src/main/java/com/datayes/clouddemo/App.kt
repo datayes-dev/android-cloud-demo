@@ -1,14 +1,16 @@
 package com.datayes.clouddemo
 
 import android.app.Application
+import com.datayes.clouddemo.weixin.WeixinHelper
 import com.datayes.common.net.Environment
-import com.datayes.iia.module_common.base.x5webview.X5WebViewManager
 import com.datayes.rrp.cloud.DataYesCloud
 
 class App : Application() {
     override fun onCreate() {
         super.onCreate()
 
+        // 微信注册
+        WeixinHelper.registerToWx(this, "微信开放平台注册的appId")
         // 初始化通联数据环境
         DataYesCloud.INSTANCE.init(
             this,

@@ -8,6 +8,14 @@ android {
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
 
+    /*signingConfigs {
+        debug {
+            storeFile file('./debug.keystore')
+            keyAlias 'datayes'
+            storePassword '***'
+            keyPassword '***'
+        }
+    }*/
     defaultConfig {
         applicationId "com.datayes.clouddemo"
         minSdkVersion 16
@@ -93,6 +101,8 @@ dependencies {
     // 一键登录
     implementation 'cn.jiguang.sdk:jcore:2.4.2'
     implementation 'cn.jiguang.sdk:jverification:2.6.5'
+    // 微信
+    implementation 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'
 
     // 通联基础组件
     implementation (name: 'module-common-1.28.22', ext: 'aar')
@@ -106,7 +116,7 @@ dependencies {
     // 通联登陆服务实现
     implementation (name: 'cloud-1.0.12', ext: 'aar')
     // 通联基础服务非实现（纯接口）
-    implementation (name: 'rrp-api-1.6.20', ext: 'aar')
+    implementation (name: 'rrp-api-1.6.26', ext: 'aar')
 
 
 }
