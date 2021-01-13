@@ -4,19 +4,23 @@ import android.content.Intent
 import android.view.View
 import android.widget.Toast
 import com.alibaba.android.arouter.launcher.ARouter
-import com.datayes.clouddemo.request.HomeBannerBean
 import com.datayes.clouddemo.request.IService
+import com.datayes.clouddemo.request.TestRequestBean
 import com.datayes.common_cloud.user.User
 import com.datayes.common_cloud.user.UserManager
 import com.datayes.common_utils.parse.GsonUtils
 import com.datayes.iia.module_common.base.BaseActivity
-import com.datayes.iia.module_common.base.bean.BaseRrpBean
 import com.datayes.iia.module_common.base.rxjava.observer.NextErrorObserver
 import com.datayes.iia.module_common.net.ApiServiceGenerator
 import com.datayes.iia.module_common.utils.RxJavaUtils
 import com.datayes.irr.rrp_api.ARouterPath
 import com.datayes.irr.rrp_api.RrpApiRouter
 import com.datayes.rrp.cloud.RouterPath
+import okhttp3.MediaType
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.RequestBody
+import okhttp3.RequestBody.Companion.toRequestBody
+import org.json.JSONObject
 
 class MainActivity : BaseActivity() {
 
@@ -74,19 +78,20 @@ class MainActivity : BaseActivity() {
 
     fun onRequestDemo(v: View?) {
         // rxJava
-        val serviceSubUrl = "/rrp_mammon/mobile"
-        service?.fetchHomeBannerInfo(serviceSubUrl, true)
+        val serviceSubUrl = "/mom_aladdin_qa"
+
+        service?.getFoFList(serviceSubUrl, TestRequestBean("C1", "sharpRatio", "DESC", 1, 10))
             ?.map {
                 // todo 耗时操作
                 it
             }
             ?.compose(RxJavaUtils.observableIoToMain())
-            ?.subscribe(object : NextErrorObserver<BaseRrpBean<List<HomeBannerBean>>>() {
+            ?.subscribe(object : NextErrorObserver<Any>() {
                 override fun onError(e: Throwable) {
 
                 }
 
-                override fun onNext(t: BaseRrpBean<List<HomeBannerBean>>) {
+                override fun onNext(t: Any) {
                     val rep = GsonUtils.createGsonString(t)
                     Toast.makeText(baseContext, "请求返回：$rep", Toast.LENGTH_LONG)
                         .show()
