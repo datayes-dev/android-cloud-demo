@@ -6,6 +6,7 @@ import android.widget.Toast
 import com.alibaba.android.arouter.launcher.ARouter
 import com.datayes.clouddemo.request.IService
 import com.datayes.clouddemo.request.TestRequestBean
+import com.datayes.clouddemo.webview.WebViewDemoActivity
 import com.datayes.common_cloud.user.User
 import com.datayes.common_cloud.user.UserManager
 import com.datayes.common_utils.parse.GsonUtils
@@ -104,6 +105,10 @@ class MainActivity : BaseActivity() {
             .build("/datayesiia/webview")
             .withString("url", "https://m-robo.datayes.com/feed/detail?id=1000")
             .navigation()
+    }
+
+    fun onWebViewDemoActivity(v: View?) {
+        startActivity(Intent(this, WebViewDemoActivity::class.java))
     }
 
 }
