@@ -115,7 +115,7 @@ dependencies {
     implementation (name: 'common-utils-0.5.9', ext: 'aar')
     implementation (name: 'common-imageloader-0.6.9', ext: 'aar')
     // 通联云平台服务
-    implementation (name: 'common-cloud-0.10.11', ext: 'aar')
+    implementation (name: 'common-cloud-0.10.16', ext: 'aar')
     // 通联登陆服务实现
     implementation (name: 'cloud-1.0.12', ext: 'aar')
     // 通联基础服务非实现（纯接口）
