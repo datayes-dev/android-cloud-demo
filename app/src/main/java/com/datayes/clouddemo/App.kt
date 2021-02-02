@@ -10,11 +10,11 @@ class App : Application() {
         super.onCreate()
 
         // 微信注册
-        WeixinHelper.registerToWx(this, "微信开放平台注册的appId")
+        WeixinHelper.registerToWx(this, "wxc6773613f4e5e17e")
         // 初始化通联数据环境
         DataYesCloud.INSTANCE.init(
             this,
-            Environment.STG, // 环境配置
+            Environment.PRD, // 环境配置
             "9",  // 通联数据产品Id，需要通联云平台做配置
             "xiaomi",
             BuildConfig.DEBUG

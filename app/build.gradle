@@ -28,8 +28,8 @@ android {
 
         manifestPlaceholders = [
                 // 一键登陆
-                JPUSH_PKGNAME: "com.datayes.irr",
-                JPUSH_APPKEY : "d224ba6c20431d9ade8b4716",
+                JPUSH_PKGNAME: "com.datayes.irobot",
+                JPUSH_APPKEY : "d318ee1079ffca5dfeb758a8",
                 JPUSH_CHANNEL: "developer-default", //暂时填写默认值即可.
         ]
     }

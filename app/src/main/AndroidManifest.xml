@@ -60,11 +60,11 @@
         <!-- 通联app_id -->
         <meta-data
             android:name="my_app_id"
-            android:value="ira" />
+            android:value="robo" />
         <!-- 通联app_secret -->
         <meta-data
             android:name="my_app_secret"
-            android:value="ira_secret" />
+            android:value="robo" />
         <!-- 通联regisger_source 注册来源 -->
         <meta-data
             android:name="my_regisger_source"
