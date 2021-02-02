@@ -68,7 +68,7 @@
         <!-- 通联regisger_source 注册来源 -->
         <meta-data
             android:name="my_regisger_source"
-            android:value="ira_secret " />
+            android:value="robo " />
         <!-- 渠道 -->
         <meta-data
             android:name="CHANNEL"
