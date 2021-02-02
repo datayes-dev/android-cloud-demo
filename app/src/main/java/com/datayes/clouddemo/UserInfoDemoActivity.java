@@ -1,7 +1,9 @@
 package com.datayes.clouddemo;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.alibaba.android.arouter.launcher.ARouter;
@@ -15,7 +17,12 @@ import com.datayes.common_cloud.user.bean.AccountBean;
 import com.datayes.common_cloud.user.event.LoginEvent;
 import com.datayes.common_cloud.user.event.LogoutEvent;
 import com.datayes.iia.module_common.base.BaseActivity;
+import com.datayes.iia.module_common.base.rxjava.observer.NextErrorObserver;
+import com.datayes.iia.module_common.utils.RxJavaUtils;
 import com.datayes.irr.rrp_api.RrpApiRouter;
+import com.datayes.rrp.cloud.user.info.ProfileInfo;
+
+import io.reactivex.annotations.NonNull;
 
 /**
  * 用户信息demo
@@ -58,6 +65,50 @@ public class UserInfoDemoActivity extends BaseActivity {
             // 用户信息
             UserInfoManager.INSTANCE.getBindWeChat();
             UserInfoManager.INSTANCE.getMobile();
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        refreshUserName();
+    }
+
+    private void refreshUserName() {
+        if (User.INSTANCE.isLogin()) {
+            // 刷新用户名
+            setUserNameView();
+            // 时时拉取用户信息数据
+            ProfileInfo.INSTANCE.refresh()
+                    .compose(this.bindToLifecycle())
+                    .compose(RxJavaUtils.observableIoToMain())
+                    .subscribe(new NextErrorObserver<Boolean>() {
+                        @Override
+                        public void onNext(@NonNull Boolean aBoolean) {
+                            setUserNameView();
+                        }
+
+                        @Override
+                        public void onError(@NonNull Throwable e) {
+                            setUserNameView();
+                        }
+                    });
+        } else {
+            // 未登陆的逻辑
+            TextView tvUserName = findViewById(R.id.tv_user_name);
+            tvUserName.setText("为登录");
+        }
+    }
+
+    private void setUserNameView() {
+        TextView tvUserName = findViewById(R.id.tv_user_name);
+        if (TextUtils.isEmpty(ProfileInfo.INSTANCE.getNickname())) {
+            tvUserName.setText(ProfileInfo.INSTANCE.getNickname());
+        } else {
+            if (User.INSTANCE.getAccountBean() != null) {
+                tvUserName.setText(User.INSTANCE.getAccountBean().getUserName());
+            }
         }
     }
 
