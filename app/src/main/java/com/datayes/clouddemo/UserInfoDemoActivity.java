@@ -65,6 +65,8 @@ public class UserInfoDemoActivity extends BaseActivity {
             // 用户信息
             UserInfoManager.INSTANCE.getBindWeChat();
             UserInfoManager.INSTANCE.getMobile();
+            UserInfoManager.INSTANCE.hasBindMobile();
+            UserInfoManager.INSTANCE.hasBindWeChat();
         }
     }
 
