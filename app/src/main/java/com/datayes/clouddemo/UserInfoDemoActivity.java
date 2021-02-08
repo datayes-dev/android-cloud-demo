@@ -10,6 +10,7 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import com.datayes.common_bus.BusManager;
 import com.datayes.common_bus.Subscribe;
 import com.datayes.common_bus.ThreadMode;
+import com.datayes.common_cloud.Cloud;
 import com.datayes.common_cloud.user.User;
 import com.datayes.common_cloud.user.UserInfoManager;
 import com.datayes.common_cloud.user.UserManager;
@@ -89,6 +90,10 @@ public class UserInfoDemoActivity extends BaseActivity {
                         @Override
                         public void onNext(@NonNull Boolean aBoolean) {
                             setUserNameView();
+                            // 获取头像url
+                            String headIcon = Cloud.INSTANCE.getUserHeader(ProfileInfo.INSTANCE.getProfileBean().getPortrait());
+                            // 刷新头像
+
                         }
 
                         @Override
