@@ -19,6 +19,7 @@ import com.datayes.common_cloud.user.event.LoginEvent;
 import com.datayes.common_cloud.user.event.LogoutEvent;
 import com.datayes.iia.module_common.base.BaseActivity;
 import com.datayes.iia.module_common.base.rxjava.observer.NextErrorObserver;
+import com.datayes.iia.module_common.base.rxjava.observer.NextObserver;
 import com.datayes.iia.module_common.utils.RxJavaUtils;
 import com.datayes.irr.rrp_api.RrpApiRouter;
 import com.datayes.rrp.cloud.user.info.ProfileInfo;
@@ -74,6 +75,18 @@ public class UserInfoDemoActivity extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
+
+        // 处理小概率事件的补救措施
+        if (User.INSTANCE.isLogin() && User.INSTANCE.getAccountBean() == null) {
+            UserManager.INSTANCE.getAccountInfo()
+                    .subscribe(new NextObserver<AccountBean>() {
+                        @Override
+                        public void onNext(@NonNull AccountBean accountBean) {
+                            // 刷新ui
+                            refreshUserName();
+                        }
+                    });
+        }
 
         refreshUserName();
     }
