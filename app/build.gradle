@@ -117,7 +117,7 @@ dependencies {
     // 通联云平台服务
     implementation (name: 'common-cloud-0.10.16', ext: 'aar')
     // 通联登陆服务实现
-    implementation (name: 'cloud-1.0.41', ext: 'aar')
+    implementation (name: 'cloud-1.0.42', ext: 'aar')
     // 通联基础服务非实现（纯接口）
     implementation (name: 'rrp-api-1.6.26', ext: 'aar')
 
