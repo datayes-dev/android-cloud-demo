@@ -1,4 +1,4 @@
-# 通联数据-基础服务-脚手架项目
+# 通联数据-Android-SDK
 ## 一.接入指南
 
 ### (一).依赖
@@ -215,3 +215,32 @@
                     .show()
             }
         })
+
+### (四).基金服务sdk
+
+gradle配置
+
+    buildFeatures {
+        viewBinding = true
+    }
+
+    // viewMode
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
+    // AdapterHelper
+    implementation "com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.45-androidx"
+
+    // 通联基金模块
+    implementation (name: 'fund-0.1.42', ext: 'aar')
+    // 通联画图组建
+    implementation (name: 'common-chart-0.15.18', ext: 'aar')
+
+
+
+初始化
+
+    // 初始化基金
+    ModuleManager.INSTANCE.register(DyFund.INSTANCE)
+    // 基金禁止feed功能
+    DyFund.INSTANCE.enableFeed = false
+
+##### 例子：

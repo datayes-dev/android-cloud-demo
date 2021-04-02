@@ -64,4 +64,12 @@
         android:onClick="onWebViewDemoActivity"
         android:text="Webview Demo" />
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="#00ff00"
+        android:onClick="onFundDemo"
+        android:text="基金Demo" />
+
 </LinearLayout>

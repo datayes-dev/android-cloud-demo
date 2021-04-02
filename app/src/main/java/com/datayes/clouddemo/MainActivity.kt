@@ -17,11 +17,6 @@ import com.datayes.iia.module_common.utils.RxJavaUtils
 import com.datayes.irr.rrp_api.ARouterPath
 import com.datayes.irr.rrp_api.RrpApiRouter
 import com.datayes.rrp.cloud.RouterPath
-import okhttp3.MediaType
-import okhttp3.MediaType.Companion.toMediaTypeOrNull
-import okhttp3.RequestBody
-import okhttp3.RequestBody.Companion.toRequestBody
-import org.json.JSONObject
 
 class MainActivity : BaseActivity() {
 
@@ -111,4 +106,7 @@ class MainActivity : BaseActivity() {
         startActivity(Intent(this, WebViewDemoActivity::class.java))
     }
 
+    fun onFundDemo(v: View?) {
+        startActivity(Intent(this, FundDemoActivity::class.java))
+    }
 }

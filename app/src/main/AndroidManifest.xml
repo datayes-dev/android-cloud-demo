@@ -38,6 +38,11 @@
             android:name=".webview.WebViewDemoActivity"
             android:theme="@style/AppTheme.W1" />
 
+        <activity
+            android:name=".FundDemoActivity"
+            android:theme="@style/AppTheme.W1" />
+
+
         <!-- 接受微信响应 -->
         <activity
             android:name=".wxapi.WXEntryActivity"
