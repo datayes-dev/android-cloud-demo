@@ -4,6 +4,7 @@ import android.app.Application
 import com.datayes.clouddemo.weixin.WeixinHelper
 import com.datayes.common.net.Environment
 import com.datayes.iia.fund.DyFund
+import com.datayes.iia.module_common.ModuleCommon
 import com.datayes.iia.module_common.ModuleManager
 import com.datayes.rrp.cloud.DataYesCloud
 
@@ -30,5 +31,14 @@ class App : Application() {
         ModuleManager.INSTANCE.register(DyFund.INSTANCE)
         // 基金禁止feed功能
         DyFund.INSTANCE.enableFeed = false
+        // 禁止分享
+        DyFund.INSTANCE.shareEnable = false
+        // 设置服务子url
+        DyFund.INSTANCE.fundNetSubUrl = when (ModuleCommon.INSTANCE.environment) {
+            Environment.STG -> "/rrp_fund_stg"
+            else -> "/rrp_fund"
+        }
+        // h5 url配置
+        DyFund.INSTANCE.webBaseUrl = "https://m-robo.datayes.com"
     }
 }
