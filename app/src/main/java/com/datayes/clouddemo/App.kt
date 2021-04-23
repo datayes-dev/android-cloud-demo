@@ -33,6 +33,8 @@ class App : Application() {
         DyFund.INSTANCE.enableFeed = false
         // 禁止分享
         DyFund.INSTANCE.shareEnable = false
+        // 是否是萝卜理财
+        DyFund.INSTANCE.isRobotFund = true
         // 设置服务子url
         DyFund.INSTANCE.fundNetSubUrl = when (ModuleCommon.INSTANCE.environment) {
             Environment.STG -> "/rrp_fund_stg"
