@@ -6,6 +6,7 @@ import com.datayes.common.net.Environment
 import com.datayes.iia.fund.DyFund
 import com.datayes.iia.module_common.ModuleCommon
 import com.datayes.iia.module_common.ModuleManager
+import com.datayes.iia.module_common.base.x5webview.X5WebViewManager
 import com.datayes.rrp.cloud.DataYesCloud
 
 class App : Application() {
@@ -42,5 +43,8 @@ class App : Application() {
         }
         // h5 url配置
         DyFund.INSTANCE.webBaseUrl = "https://m-robo.datayes.com"
+
+        // webview 添加通华的白名单
+        X5WebViewManager.INSTANCE.addDefaultJumpNewWhiteList("tonghuafund.com.cn")
     }
 }
