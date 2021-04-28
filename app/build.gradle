@@ -114,14 +114,14 @@ dependencies {
     implementation 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'
 
     // 通联基础组件
-    implementation (name: 'module-common-1.30.5', ext: 'aar')
+    implementation (name: 'module-common-1.30.7', ext: 'aar')
     implementation (name: 'common-view-0.9.7', ext: 'aar')
     implementation (name: 'common-bus-0.5.3', ext: 'aar')
     implementation (name: 'common-net-0.6.11', ext: 'aar')
     implementation (name: 'common-storage-0.5.0', ext: 'aar')
     implementation (name: 'common-utils-0.5.9', ext: 'aar')
     implementation (name: 'common-imageloader-0.6.9', ext: 'aar')
-    implementation (name: 'common-chart-0.15.34', ext: 'aar')
+    implementation (name: 'common-chart-0.16.4', ext: 'aar')
     // 通联云平台服务
     implementation (name: 'common-cloud-0.10.18', ext: 'aar')
     // 通联登陆服务实现
@@ -129,6 +129,6 @@ dependencies {
     // 通联基础服务非实现（纯接口）
     implementation (name: 'rrp-api-1.8.16', ext: 'aar')
     // 通联基金模块
-    implementation (name: 'fund-0.3.4', ext: 'aar')
+    implementation (name: 'fund-0.4.0', ext: 'aar')
 
 }
