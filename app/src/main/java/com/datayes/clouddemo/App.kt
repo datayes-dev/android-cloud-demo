@@ -5,9 +5,11 @@ import com.datayes.common.net.Environment
 import com.datayes.iia.fund.DyFund
 import com.datayes.iia.module_common.ModuleCommon
 import com.datayes.iia.module_common.ModuleManager
+import com.datayes.iia.module_common.base.x5webview.WebViewJsManager
 import com.datayes.iia.module_common.base.x5webview.X5WebViewManager
 import com.datayes.rrp.cloud.DataYesCloud
 import com.datayes.servicethirdparty.ServiceThirdParty
+import com.datayes.servicethirdparty.ShareJsCallNative
 
 class App : Application() {
     override fun onCreate() {
@@ -27,6 +29,10 @@ class App : Application() {
                     e.printStackTrace()
                 }
             }
+        // 分享到微信的豆腐块icon
+        ServiceThirdParty.INSTANCE.shareIconRes  = R.drawable.common_ic_share_icon
+        // 支持分享js回调
+        WebViewJsManager.INSTANCE.registerJsHandler(ShareJsCallNative())
 
         // 初始化通联数据环境
         DataYesCloud.INSTANCE.init(
