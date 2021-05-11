@@ -1,20 +1,33 @@
 package com.datayes.clouddemo
 
 import android.app.Application
-import com.datayes.clouddemo.weixin.WeixinHelper
 import com.datayes.common.net.Environment
 import com.datayes.iia.fund.DyFund
 import com.datayes.iia.module_common.ModuleCommon
 import com.datayes.iia.module_common.ModuleManager
 import com.datayes.iia.module_common.base.x5webview.X5WebViewManager
 import com.datayes.rrp.cloud.DataYesCloud
+import com.datayes.servicethirdparty.ServiceThirdParty
 
 class App : Application() {
     override fun onCreate() {
         super.onCreate()
 
         // 微信注册
-        WeixinHelper.registerToWx(this, "wxc6773613f4e5e17e")
+//        WeixinHelper.registerToWx(this, "wxc6773613f4e5e17e") 这个删除
+        // 初始化第三方组件
+        ServiceThirdParty.INSTANCE
+            .initWeixin(this, "wxc6773613f4e5e17e")
+            .enableShareComponent(true, false, false, false)
+            .apply {
+                try {
+                    // 替换成微博AppKey
+                    // initSina(this@App, "**", "https://api.weibo.com/oauth2/default.html", "")
+                } catch (e: Error) {
+                    e.printStackTrace()
+                }
+            }
+
         // 初始化通联数据环境
         DataYesCloud.INSTANCE.init(
             this,

@@ -3,6 +3,7 @@ package com.datayes.clouddemo.weixin
 import android.content.Context
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.datayes.irr.rrp_api.wechart.IWeChartService
+import com.datayes.servicethirdparty.ServiceThirdParty
 
 /**
  * 微信Service
@@ -18,7 +19,7 @@ class WeChatServiceImpl : IWeChartService {
     }
 
     override fun weiXinOauth(context: Context) {
-        WeixinHelper.fetchWxAuth(context)
+        ServiceThirdParty.INSTANCE.weiXin.weiXinOauth(context)
     }
 
 }
