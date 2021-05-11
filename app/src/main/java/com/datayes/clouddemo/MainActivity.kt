@@ -9,6 +9,7 @@ import com.datayes.clouddemo.request.TestRequestBean
 import com.datayes.clouddemo.webview.WebViewDemoActivity
 import com.datayes.common_cloud.user.User
 import com.datayes.common_cloud.user.UserManager
+import com.datayes.common_utils.image.ImageUtils
 import com.datayes.common_utils.parse.GsonUtils
 import com.datayes.iia.module_common.base.BaseActivity
 import com.datayes.iia.module_common.base.rxjava.observer.NextErrorObserver
@@ -16,6 +17,7 @@ import com.datayes.iia.module_common.net.ApiServiceGenerator
 import com.datayes.iia.module_common.utils.RxJavaUtils
 import com.datayes.irr.rrp_api.ARouterPath
 import com.datayes.irr.rrp_api.RrpApiRouter
+import com.datayes.irr.rrp_api.share.IShareService
 import com.datayes.rrp.cloud.RouterPath
 
 class MainActivity : BaseActivity() {
@@ -108,5 +110,16 @@ class MainActivity : BaseActivity() {
 
     fun onFundDemo(v: View?) {
         startActivity(Intent(this, FundDemoActivity::class.java))
+    }
+
+    fun onShareClick(view: View) {
+        val shareService = ARouter.getInstance().navigation(IShareService::class.java)
+        if (shareService != null) {
+            val draw = ImageUtils.getBitmap(baseContext, R.drawable.ic_launcher)
+            // 分享链接
+            shareService.onShareDialog(this, draw, "标题", "内容", "https://www.datayes.com")
+            // 分享图片
+//            shareService.onShareDialog(this, "分享图片", "分享图片", draw, true)
+        }
     }
 }
