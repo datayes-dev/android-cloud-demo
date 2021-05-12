@@ -41,7 +41,8 @@
         android:layout_height="wrap_content"
         android:background="@color/color_R1"
         android:onClick="onRequestDemo"
-        android:text="通联带登陆权限请求例子" />
+        android:text="通联带登陆权限请求例子"
+        android:textColor="@color/color_W1" />
 
     <Button
         android:layout_width="match_parent"
@@ -54,7 +55,8 @@
         android:layout_height="wrap_content"
         android:background="@color/color_G1"
         android:onClick="onUserInfo"
-        android:text="用户信息相关demo" />
+        android:text="用户信息相关demo"
+        android:textColor="@color/color_W1" />
 
     <Button
         android:layout_width="match_parent"
@@ -62,13 +64,15 @@
         android:layout_marginTop="10dp"
         android:background="@color/color_B1"
         android:onClick="onWebViewDemoActivity"
-        android:text="Webview Demo" />
+        android:text="Webview Demo"
+        android:textColor="@color/color_W1" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:background="#00ff00"
+
         android:onClick="onFundDemo"
         android:text="基金Demo" />
 
@@ -78,6 +82,17 @@
         android:layout_marginTop="10dp"
         android:background="@android:color/holo_blue_light"
         android:onClick="onShareClick"
-        android:text="调用分享" />
+        android:text="调用分享"
+        android:textColor="@color/color_W1" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@android:color/holo_orange_dark"
+        android:onClick="onLaunchService"
+        android:text="联系客服"
+        android:textColor="@color/color_W1" />
+
 
 </LinearLayout>

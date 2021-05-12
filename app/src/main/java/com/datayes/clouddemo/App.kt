@@ -1,6 +1,7 @@
 package com.datayes.clouddemo
 
 import android.app.Application
+import cn.udesk.DataYesUDesk
 import com.datayes.common.net.Environment
 import com.datayes.iia.fund.DyFund
 import com.datayes.iia.module_common.ModuleCommon
@@ -30,7 +31,7 @@ class App : Application() {
                 }
             }
         // 分享到微信的豆腐块icon
-        ServiceThirdParty.INSTANCE.shareIconRes  = R.drawable.common_ic_share_icon
+        ServiceThirdParty.INSTANCE.shareIconRes = R.drawable.common_ic_share_icon
         // 支持分享js回调
         WebViewJsManager.INSTANCE.registerJsHandler(ShareJsCallNative())
 
@@ -65,5 +66,12 @@ class App : Application() {
 
         // webview 添加通华的白名单
         X5WebViewManager.INSTANCE.addDefaultJumpNewWhiteList("tonghuafund.com.cn")
+        // 客服系统初始化
+        DataYesUDesk.INSTANCE.init(
+            this, "datayes.udesk.cn",
+            "e04648492d27e4de1e4b5367a2935754", "0f2ea5028bdf8710"
+        )
     }
+
+
 }

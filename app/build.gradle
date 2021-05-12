@@ -73,6 +73,7 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0"
     implementation "androidx.lifecycle:lifecycle-livedata-core-ktx:2.2.0"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     // UI组件
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
@@ -133,5 +134,7 @@ dependencies {
     // 分享模块
     implementation(name: 'openDefault-4.4.4', ext: 'aar')
     implementation(name: 'servicethirdparty-0.9.14', ext: 'aar')
+    // 客服模块
+    implementation(name: 'UdeskSDKUI-1.1.2', ext: 'aar')
 
 }

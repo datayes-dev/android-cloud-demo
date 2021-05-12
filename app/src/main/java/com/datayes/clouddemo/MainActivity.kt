@@ -17,6 +17,7 @@ import com.datayes.iia.module_common.net.ApiServiceGenerator
 import com.datayes.iia.module_common.utils.RxJavaUtils
 import com.datayes.irr.rrp_api.ARouterPath
 import com.datayes.irr.rrp_api.RrpApiRouter
+import com.datayes.irr.rrp_api.feedback.IFeedBackService
 import com.datayes.irr.rrp_api.share.IShareService
 import com.datayes.rrp.cloud.RouterPath
 
@@ -122,4 +123,16 @@ class MainActivity : BaseActivity() {
 //            shareService.onShareDialog(this, "分享图片", "分享图片", draw, true)
         }
     }
+
+    /**
+     * 启动客服页面
+     */
+    fun onLaunchService(view: View) {
+        val feedbackService = ARouter.getInstance().navigation(IFeedBackService::class.java)
+        if (feedbackService != null) {
+            // 打开客服页面
+            feedbackService.openFeedBack()
+        }
+    }
+    
 }
