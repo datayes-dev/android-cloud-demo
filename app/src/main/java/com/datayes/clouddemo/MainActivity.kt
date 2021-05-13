@@ -11,6 +11,7 @@ import com.datayes.common_cloud.user.User
 import com.datayes.common_cloud.user.UserManager
 import com.datayes.common_utils.image.ImageUtils
 import com.datayes.common_utils.parse.GsonUtils
+import com.datayes.common_utils.toast.ToastUtils
 import com.datayes.iia.module_common.base.BaseActivity
 import com.datayes.iia.module_common.base.rxjava.observer.NextErrorObserver
 import com.datayes.iia.module_common.net.ApiServiceGenerator
@@ -20,6 +21,7 @@ import com.datayes.irr.rrp_api.RrpApiRouter
 import com.datayes.irr.rrp_api.feedback.IFeedBackService
 import com.datayes.irr.rrp_api.share.IShareService
 import com.datayes.rrp.cloud.RouterPath
+import com.datayes.rrp.cloud.user.privacy.PrivacyDialogFragment
 
 class MainActivity : BaseActivity() {
 
@@ -134,5 +136,23 @@ class MainActivity : BaseActivity() {
             feedbackService.openFeedBack()
         }
     }
-    
+
+    /**
+     * 用户隐私条款
+     */
+    fun checkPrivacyDialog(view: View) {
+        // 用户是否同意
+        if (PrivacyDialogFragment.checkUserIsAgree().not()) {
+            PrivacyDialogFragment {
+                // 点击同意/不同意后的回调
+                ToastUtils.showShortToast(this, if (it) "同意" else "不同意")
+            }.show(supportFragmentManager)
+        } else {
+            ToastUtils.showShortToast(this, "已同意过隐私条款")
+        }
+
+        // 扩展方法，按需使用：true表示已经弹出过，false表示从未弹出过
+        // PrivacyDialogFragment.checkPrivacyHasAppear()
+    }
+
 }

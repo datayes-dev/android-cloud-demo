@@ -1,98 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".MainActivity">
+    android:layout_height="match_parent">
 
-    <Button
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="onLoginClick"
-        android:text="登陆" />
+        android:orientation="vertical"
+        tools:context=".MainActivity">
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="onOneBtnLoginClick"
-        android:text="弹窗登陆-需要在移动网络环境中" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onLoginClick"
+            android:text="登陆" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="onLogoutClick"
-        android:text="登出" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onOneBtnLoginClick"
+            android:text="弹窗登陆-需要在移动网络环境中" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="showUserInfo"
-        android:text="查看登录用户信息" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onLogoutClick"
+            android:text="登出" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="onBindClick"
-        android:text="微信绑定页面" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="showUserInfo"
+            android:text="查看登录用户信息" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/color_R1"
-        android:onClick="onRequestDemo"
-        android:text="通联带登陆权限请求例子"
-        android:textColor="@color/color_W1" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onBindClick"
+            android:text="微信绑定页面" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="onWebViewDemo"
-        android:text="通联免登陆Webview" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/color_R1"
+            android:onClick="onRequestDemo"
+            android:text="通联带登陆权限请求例子"
+            android:textColor="@color/color_W1" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/color_G1"
-        android:onClick="onUserInfo"
-        android:text="用户信息相关demo"
-        android:textColor="@color/color_W1" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onWebViewDemo"
+            android:text="通联免登陆Webview" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:background="@color/color_B1"
-        android:onClick="onWebViewDemoActivity"
-        android:text="Webview Demo"
-        android:textColor="@color/color_W1" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/color_G1"
+            android:onClick="onUserInfo"
+            android:text="用户信息相关demo"
+            android:textColor="@color/color_W1" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:background="#00ff00"
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@color/color_B1"
+            android:onClick="onWebViewDemoActivity"
+            android:text="Webview Demo"
+            android:textColor="@color/color_W1" />
 
-        android:onClick="onFundDemo"
-        android:text="基金Demo" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="#00ff00"
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:background="@android:color/holo_blue_light"
-        android:onClick="onShareClick"
-        android:text="调用分享"
-        android:textColor="@color/color_W1" />
+            android:onClick="onFundDemo"
+            android:text="基金Demo" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:background="@android:color/holo_orange_dark"
-        android:onClick="onLaunchService"
-        android:text="联系客服"
-        android:textColor="@color/color_W1" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@android:color/holo_blue_light"
+            android:onClick="onShareClick"
+            android:text="调用分享"
+            android:textColor="@color/color_W1" />
 
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@android:color/holo_orange_dark"
+            android:onClick="onLaunchService"
+            android:text="联系客服"
+            android:textColor="@color/color_W1" />
 
-</LinearLayout>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@android:color/holo_green_light"
+            android:onClick="checkPrivacyDialog"
+            android:text="隐私条款弹框"
+            android:textColor="@color/color_W1" />
+
+    </LinearLayout>
+
+</ScrollView>
