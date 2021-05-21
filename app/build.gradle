@@ -126,7 +126,7 @@ dependencies {
     // 通联云平台服务
     implementation(name: 'common-cloud-0.10.18', ext: 'aar')
     // 通联登陆服务实现
-    implementation(name: 'cloud-1.0.49', ext: 'aar')
+    implementation(name: 'cloud-1.1.1', ext: 'aar')
     // 通联基础服务非实现（纯接口）
     implementation(name: 'rrp-api-1.8.16', ext: 'aar')
     // 通联基金模块
